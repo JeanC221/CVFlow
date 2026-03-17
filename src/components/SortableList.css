@@ -1,0 +1,68 @@
+.sortable-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sortable-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-card);
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  animation: fadeInUp 0.3s ease backwards;
+}
+
+.sortable-item:active {
+  box-shadow: var(--shadow-md);
+}
+
+.drag-handle {
+  cursor: grab;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  padding: 8px;
+  display: flex;
+  flex-shrink: 0;
+  touch-action: none;
+  border-radius: 8px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.drag-handle:hover {
+  background: var(--input-bg);
+  color: var(--text-primary);
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.sortable-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.sortable-content strong {
+  font-size: 15px;
+  display: block;
+}
+
+.sortable-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.empty-text {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 40px 20px;
+  font-size: 14px;
+  animation: fadeIn 0.3s ease;
+  line-height: 1.6;
+}

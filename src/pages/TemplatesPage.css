@@ -1,0 +1,129 @@
+.templates-intro {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.templates-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.template-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+  text-align: left;
+  width: 100%;
+  font-family: inherit;
+  position: relative;
+  animation: fadeInUp 0.35s ease backwards;
+}
+
+.template-card:nth-child(2) { animation-delay: 0.1s; }
+
+.template-card.selected {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-dim);
+}
+
+.template-card:active {
+  transform: scale(0.98);
+}
+
+.template-preview {
+  width: 80px;
+  height: 100px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 10px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tp-line {
+  border-radius: 2px;
+  height: 5px;
+}
+
+.tp-name {
+  background: #333;
+  width: 70%;
+  height: 7px;
+}
+
+.tp-contact {
+  background: #aaa;
+  width: 90%;
+  height: 3px;
+}
+
+.tp-divider {
+  height: 1px;
+  background: #ccc;
+  margin: 2px 0;
+}
+
+.tp-section {
+  background: #555;
+  width: 50%;
+  height: 4px;
+}
+
+.tp-text {
+  background: #ddd;
+  width: 100%;
+}
+
+.tp-text.short {
+  width: 60%;
+}
+
+.template-preview.sans .tp-name {
+  border-radius: 0;
+}
+
+.template-preview.serif .tp-name {
+  border-radius: 1px;
+}
+
+.template-info {
+  flex: 1;
+}
+
+.template-info strong {
+  display: block;
+  font-size: 15px;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.template-info span {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.template-check {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: var(--primary);
+  color: #fff;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  animation: scaleIn 0.25s ease;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+}

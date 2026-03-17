@@ -1,0 +1,93 @@
+.cv-harvard {
+  font-family: Georgia, 'Times New Roman', Garamond, serif;
+  color: #1a1a1a;
+  background: #fff;
+  padding: 40px 36px;
+  font-size: 11pt;
+  line-height: 1.5;
+  max-width: 210mm;
+}
+
+.cv-header {
+  text-align: center;
+  border-bottom: 2px solid #1a1a1a;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.cv-name {
+  font-size: 22pt;
+  font-weight: 700;
+  margin: 0 0 6px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+}
+
+.cv-contact {
+  font-size: 9.5pt;
+  color: #444;
+}
+
+.cv-section {
+  margin-bottom: 14px;
+}
+
+.cv-section-title {
+  font-size: 12pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #999;
+  padding-bottom: 3px;
+  margin: 0 0 8px;
+  color: #1a1a1a;
+}
+
+.cv-entry {
+  margin-bottom: 10px;
+}
+
+.cv-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.cv-company {
+  display: block;
+  font-style: italic;
+  font-size: 10.5pt;
+  color: #333;
+}
+
+.cv-date {
+  font-size: 10pt;
+  color: #555;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cv-tech {
+  font-style: italic;
+  color: #555;
+  font-size: 10pt;
+}
+
+.cv-achievements {
+  margin: 4px 0 0 18px;
+  padding: 0;
+}
+
+.cv-achievements li {
+  margin-bottom: 2px;
+}
+
+.cv-entry p {
+  margin: 4px 0 0;
+  font-size: 10.5pt;
+}
+
+.cv-section > p {
+  font-size: 10.5pt;
+}
