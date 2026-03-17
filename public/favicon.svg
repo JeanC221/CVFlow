@@ -1,4 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#2563EB"/>
-  <text x="16" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="18" fill="#fff">CV</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background -->
+  <rect width="512" height="512" rx="96" fill="#2563EB"/>
+  <!-- Document -->
+  <rect x="120" y="70" width="220" height="290" rx="24" fill="#fff" opacity="0.95"/>
+  <!-- Corner fold -->
+  <path d="M280 70 L340 130 L280 130 Z" fill="#93C5FD"/>
+  <!-- Text lines -->
+  <rect x="160" y="140" width="140" height="14" rx="7" fill="#2563EB" opacity="0.3"/>
+  <rect x="160" y="170" width="110" height="14" rx="7" fill="#2563EB" opacity="0.3"/>
+  <rect x="160" y="200" width="130" height="14" rx="7" fill="#2563EB" opacity="0.25"/>
+  <rect x="160" y="230" width="100" height="14" rx="7" fill="#2563EB" opacity="0.2"/>
+  <!-- Flow arrow -->
+  <path d="M130 380 Q200 300 260 330 Q320 360 380 280" fill="none" stroke="#fff" stroke-width="24" stroke-linecap="round"/>
+  <!-- Arrow head -->
+  <polygon points="370,260 410,285 375,305" fill="#fff"/>
 </svg>
