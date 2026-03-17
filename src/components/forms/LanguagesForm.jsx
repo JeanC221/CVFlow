@@ -17,11 +17,11 @@ export default function LanguagesForm() {
     e.preventDefault();
     if (!name.trim()) return;
     if (editId) {
-      dispatch({ type: 'UPDATE_ITEM', section: 'languages', payload: { id: editId, name, proficiency } });
+      dispatch({ type: 'UPDATE_ITEM', section: 'languages', payload: { id: editId, name: name.trim(), proficiency } });
       toast.success('Language updated');
       setEditId(null);
     } else {
-      dispatch({ type: 'ADD_ITEM', section: 'languages', payload: { name, proficiency } });
+      dispatch({ type: 'ADD_ITEM', section: 'languages', payload: { name: name.trim(), proficiency } });
       toast.success('Language added');
     }
     setName('');
@@ -61,7 +61,7 @@ export default function LanguagesForm() {
           <h3 className="form-card-title">{editId ? 'Edit' : 'Add'} Language</h3>
           <div className="form-group">
             <label className="form-label">Language</label>
-            <input value={name} onChange={(e) => setName(e.target.value)} placeholder="English, Spanish, etc." required />
+            <input value={name} onChange={(e) => setName(e.target.value)} placeholder="English, Spanish, etc." required maxLength={100} />
           </div>
           <div className="form-group">
             <label className="form-label">Proficiency</label>

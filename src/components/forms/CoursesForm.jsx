@@ -13,18 +13,22 @@ export default function CoursesForm() {
   const [form, setForm] = useState(emptyCourse);
   const [editId, setEditId] = useState(null);
   const [showForm, setShowForm] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const trimForm = (f) => Object.fromEntries(Object.entries(f).map(([k, v]) => [k, v.trim()]));
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const trimmed = trimForm(form);
     if (editId) {
-      dispatch({ type: 'UPDATE_ITEM', section: 'courses', payload: { ...form, id: editId } });
+      dispatch({ type: 'UPDATE_ITEM', section: 'courses', payload: { ...trimmed, id: editId } });
       toast.success('Course updated');
     } else {
-      dispatch({ type: 'ADD_ITEM', section: 'courses', payload: form });
+      dispatch({ type: 'ADD_ITEM', section: 'courses', payload: trimmed });
       toast.success('Course added');
     }
     setForm(emptyCourse);
@@ -39,8 +43,13 @@ export default function CoursesForm() {
   };
 
   const handleDelete = (id) => {
-    dispatch({ type: 'DELETE_ITEM', section: 'courses', payload: id });
+    setDeleteId(id);
+  };
+
+  const confirmDelete = () => {
+    dispatch({ type: 'DELETE_ITEM', section: 'courses', payload: deleteId });
     toast.info('Course removed');
+    setDeleteId(null);
   };
 
   const handleReorder = (items) => {
@@ -74,20 +83,20 @@ export default function CoursesForm() {
           <form className="card form-card" onSubmit={handleSubmit}>
             <h3 className="form-card-title">{editId ? 'Edit' : 'Add'} Course</h3>
             <div className="form-group">
-              <label className="form-label">Course Name</label>
-              <input name="name" value={form.name} onChange={handleChange} placeholder="Course or certification name" required />
+              <label className="form-label">Course Name *</label>
+              <input name="name" value={form.name} onChange={handleChange} placeholder="Course or certification name" required maxLength={200} />
             </div>
             <div className="form-group">
-              <label className="form-label">Institution</label>
-              <input name="institution" value={form.institution} onChange={handleChange} placeholder="Coursera, Udemy, etc." required />
+              <label className="form-label">Institution *</label>
+              <input name="institution" value={form.institution} onChange={handleChange} placeholder="Coursera, Udemy, etc." required maxLength={200} />
             </div>
             <div className="form-group">
               <label className="form-label">Date</label>
-              <input name="date" value={form.date} onChange={handleChange} placeholder="2023" />
+              <input name="date" value={form.date} onChange={handleChange} placeholder="2023" maxLength={20} />
             </div>
             <div className="form-group">
               <label className="form-label">URL (optional)</label>
-              <input name="url" value={form.url} onChange={handleChange} placeholder="Certificate link" />
+              <input name="url" value={form.url} onChange={handleChange} placeholder="Certificate link" maxLength={500} inputMode="url" />
             </div>
             <div className="form-actions">
               <button type="button" className="btn btn-secondary" onClick={() => { setShowForm(false); setEditId(null); }}>Cancel</button>
@@ -96,6 +105,19 @@ export default function CoursesForm() {
           </form>
         )}
       </div>
+
+      {deleteId && (
+        <div className="confirm-overlay" onClick={() => setDeleteId(null)}>
+          <div className="confirm-dialog" onClick={(e) => e.stopPropagation()}>
+            <h3>Delete Course?</h3>
+            <p>This entry will be permanently removed.</p>
+            <div className="confirm-actions">
+              <button className="btn btn-secondary" onClick={() => setDeleteId(null)}>Cancel</button>
+              <button className="btn btn-danger" onClick={confirmDelete}>Delete</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

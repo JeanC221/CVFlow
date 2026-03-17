@@ -18,11 +18,11 @@ export default function SkillsForm() {
     e.preventDefault();
     if (!name.trim()) return;
     if (editId) {
-      dispatch({ type: 'UPDATE_ITEM', section: 'skills', payload: { id: editId, name, level } });
+      dispatch({ type: 'UPDATE_ITEM', section: 'skills', payload: { id: editId, name: name.trim(), level } });
       toast.success('Skill updated');
       setEditId(null);
     } else {
-      dispatch({ type: 'ADD_ITEM', section: 'skills', payload: { name, level } });
+      dispatch({ type: 'ADD_ITEM', section: 'skills', payload: { name: name.trim(), level } });
       toast.success('Skill added');
     }
     setName('');
@@ -62,7 +62,7 @@ export default function SkillsForm() {
           <h3 className="form-card-title">{editId ? 'Edit' : 'Add'} Skill</h3>
           <div className="form-group">
             <label className="form-label">Skill Name</label>
-            <input value={name} onChange={(e) => setName(e.target.value)} placeholder="React, Python, etc." required />
+            <input value={name} onChange={(e) => setName(e.target.value)} placeholder="React, Python, etc." required maxLength={100} />
           </div>
           <div className="form-group">
             <label className="form-label">Level</label>

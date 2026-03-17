@@ -8,10 +8,11 @@ export default function ProfileForm() {
   const { state, dispatch } = useCV();
   const toast = useToast();
   const [profile, setProfile] = useState(state.profile);
+  const maxChars = 2000;
 
   const handleSave = (e) => {
     e.preventDefault();
-    dispatch({ type: 'SET_PROFILE', payload: profile });
+    dispatch({ type: 'SET_PROFILE', payload: profile.trim() });
     toast.success('Profile saved');
   };
 
@@ -26,7 +27,9 @@ export default function ProfileForm() {
             onChange={(e) => setProfile(e.target.value)}
             placeholder="Briefly describe your professional background, key skills, and career goals..."
             rows={6}
+            maxLength={maxChars}
           />
+          <span className="char-count">{profile.length}/{maxChars}</span>
         </div>
         <button type="submit" className="btn btn-primary">
           Save
